@@ -4,7 +4,7 @@
     "tailwindcss": "^3.4.3"
   },
   "scripts": {
-    "build": "tailwindcss -m -i src/index.css -o static/index.css",
-    "watch": "tailwindcss -w -i src/index.css -o static/index.css"
+    "build": "tailwindcss -m -i src/index.css -o docs/index.css",
+    "watch": "tailwindcss -w -i src/index.css -o docs/index.css"
   }
 }
