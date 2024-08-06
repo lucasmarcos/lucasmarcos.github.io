@@ -1,46 +1,138 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="data:" />
-    <link rel="stylesheet" href="index.css" />
-    <title>lucasmarcos</title>
-    <script type="importmap">
-      {
-        "imports": {}
-      }
-    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="bg-black text-white">
-    <div class="container mx-auto my-3">
-      <h1 class="text-3xl">oi</h1>
+  <body>
+    <div class="flex flex-row">
+      <div class="flex flex-col flex-1">
+        <div>
+          <select id="exemplos">
+            <option value="exemplo1">Exemplo 1</option>
+            <option value="exemplo2">Exemplo 2</option>
+            <option value="exemplo3">Exemplo 3</option>
+          </select>
+          <input type="button" id="carregar" value="Carregar">
+        </div>
 
-      <div class="m-3">
-        <ul class="list-disc">
-          <!--
-          <li>
-            <a class="underline hover:decoration-green-500" href="tcc.pdf">tcc.pdf</a>
-          </li>
-	  -->
-	  <!--
-          <li>
-            <a class="underline hover:decoration-green-500" href="pdflatex/tcc.pdf">pdflatex/tcc.pdf</a>
-          </li>
-	  -->
-	  <!--
-          <li>
-            <a class="underline hover:decoration-green-500" href="beamer/tcc.pdf">beamer/tcc.pdf</a>
-          </li>
-	  -->
-         </ul>
+        <!--
+        <textarea id="code" class="flex-1" rows="24" cols="80">
+          A;
+          FORK B;
+          C;
+        </textarea>
+        -->
+
+        <div id="code2" class="flex-1"></div>
+      </div>
+
+      <div class="flex-1">
+        <div id="tree">
+        </div>
       </div>
     </div>
 
-    <div id="root"></div>
+    <script src="/tree-sitter.js"></script>
+    <script>
+      (async () => {
+        const exemplos = [
+`VAR_J = 2;
+C1;
+FORK ROT_C3;
+C2;
+JOIN VAR_J, ROT_C4, QUIT;
 
-    <script type="module">
-      const root = document.getElementById("root");
+ROT_C3:
+  C3;
+  JOIN VAR_J, ROT_C4, QUIT;
+
+ROT_C4:
+  C4;
+`,
+`VAR_C5=2;
+VAR_C6=2;
+
+C1;
+FORK ROT_C3;
+FORK ROT_C4;
+C2;
+JOIN VAR_C5, ROT_C5, QUIT;
+
+ROT_C3: C3;
+  JOIN VAR_C5, ROT_C5, QUIT;
+
+ROT_C4: C4;
+  JOIN VAR_C6, ROT_C6, QUIT;
+
+ROT_C5: C5;
+  JOIN VAR_C6, ROT_C6, QUIT;
+
+ROT_C6: C6;
+  QUIT;
+`,
+`VAR_D=2;
+VAR_E=2;
+
+A;
+FORK ROT_C;
+B;
+FORK ROT_E’;
+JOIN VAR_D, ROT_D, QUIT;
+
+ROT_C: C;
+  JOIN VAR_D, ROT_D, QUIT;
+
+ROT_D: D;
+  JOIN VAR_E ; ROT_E , QUIT ;
+
+ROT_E’: JOIN VAR_E, ROT_E, QUIT;
+
+ROT_E: E;
+  QUIT;
+`];
+
+        const Parser = window.TreeSitter;
+        await Parser.init();
+        const ForkJoin = await Parser.Language.load("tree-sitter-forkjoin.wasm");
+        const parser = new Parser;
+        parser.setLanguage(ForkJoin);
+
+        const codemirror = await import("https://esm.sh/codemirror");
+        const { EditorView, basicSetup } = codemirror;
+
+        const treePanel = document.getElementById("tree");
+
+        const go = (u) => {
+          const tree = parser.parse(u.state.doc.text.join());
+          treePanel.textContent = tree.rootNode.toString();
+        };
+ 
+        const updated = EditorView.updateListener.of((update) => {
+          if (update.docChanged) {
+            go(update);
+          }
+        });
+
+        let editor = new EditorView({
+          doc: `A;
+FORK B;
+C;`,
+          extensions: [basicSetup, updated],
+          parent: document.getElementById("code2")
+        });
+
+        go(editor);
+
+        document.getElementById("carregar").onclick = () => {
+          const es = document.getElementById("exemplos");
+          const i = es.selectedIndex;
+          const e = exemplos[i];
+          const transaction = editor.state.update({changes: {from: 0, to: editor.state.doc.length, insert: e}});
+          editor.dispatch(transaction);
+        };
+      })();
     </script>
   </body>
 </html>
