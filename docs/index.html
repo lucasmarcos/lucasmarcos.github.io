@@ -35,8 +35,12 @@
     </div>
 
     <script src="/tree-sitter.js"></script>
+
     <script>
       (async () => {
+        const exs = await fetch("https://gist.githubusercontent.com/lucasmarcos/db34e904473ef28e74f28462db43eec0/raw/86362ac2df2a8e7a23cffc4b8bd000c68416261f/exemplos.json");
+        const exss = await exs.json();
+
         const exemplos = [
 `VAR_J = 2;
 C1;
@@ -78,16 +82,16 @@ VAR_E=2;
 A;
 FORK ROT_C;
 B;
-FORK ROT_E’;
+FORK ROT_E';
 JOIN VAR_D, ROT_D, QUIT;
 
 ROT_C: C;
   JOIN VAR_D, ROT_D, QUIT;
 
 ROT_D: D;
-  JOIN VAR_E ; ROT_E , QUIT ;
+  JOIN VAR_E , ROT_E , QUIT ;
 
-ROT_E’: JOIN VAR_E, ROT_E, QUIT;
+ROT_E': JOIN VAR_E, ROT_E, QUIT;
 
 ROT_E: E;
   QUIT;
@@ -105,10 +109,13 @@ ROT_E: E;
         const treePanel = document.getElementById("tree");
 
         const go = (u) => {
-          const tree = parser.parse(u.state.doc.text.join());
+          const code = u.state.doc.text.join("\n");
+          const tree = parser.parse(code);
           treePanel.textContent = tree.rootNode.toString();
+
+          console.log(tree.walk(console.log));
         };
- 
+
         const updated = EditorView.updateListener.of((update) => {
           if (update.docChanged) {
             go(update);
