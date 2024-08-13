@@ -1,0 +1,20 @@
+{
+  "exemplos": [
+    {
+      "codigo": "A;\nFORK B;\nC;\n",
+      "nome": "Simples"
+    },
+    {
+      "codigo": "VAR_J = 2;\n\nC1;\nFORK ROT_C3;\nC2;\nJOIN VAR_J, ROT_C4, QUIT;\n\nROT_C3:\n  C3;\n  JOIN VAR_J, ROT_C4, QUIT;\n\nROT_C4:\n  C4;\n",
+      "nome": "Exemplo 1"
+    },
+    {
+      "codigo": "VAR_C5=2;\nVAR_C6=2;\n\nC1;\nFORK ROT_C3;\nFORK ROT_C4;\nC2;\nJOIN VAR_C5, ROT_C5, QUIT;\n\nROT_C3: C3;\n  JOIN VAR_C5, ROT_C5, QUIT;\n\nROT_C4: C4;\n  JOIN VAR_C6, ROT_C6, QUIT;\n\nROT_C5: C5;\n  JOIN VAR_C6, ROT_C6, QUIT;\n\nROT_C6: C6;\n  QUIT;\n",
+      "nome": "Exemplo 2"
+    },
+    {
+      "codigo": "VAR_D=2;\nVAR_E=2;\n\nA;\nFORK ROT_C;\nB;\nFORK ROT_E’;\nJOIN VAR_D, ROT_D, QUIT;\n\nROT_C: C;\n  JOIN VAR_D, ROT_D, QUIT;\n\nROT_D: D;\n  JOIN VAR_E ; ROT_E , QUIT ;\n\nROT_E’: JOIN VAR_E, ROT_E, QUIT;\n\nROT_E: E;\n  QUIT;\n",
+      "nome": "Exemplo 3"
+    }
+  ]
+}
