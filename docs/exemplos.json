@@ -13,7 +13,7 @@
       "nome": "Exemplo 2"
     },
     {
-      "codigo": "VAR_D=2;\nVAR_E=2;\n\nA;\nFORK ROT_C;\nB;\nFORK ROT_E’;\nJOIN VAR_D, ROT_D, QUIT;\n\nROT_C: C;\n  JOIN VAR_D, ROT_D, QUIT;\n\nROT_D: D;\n  JOIN VAR_E ; ROT_E , QUIT ;\n\nROT_E’: JOIN VAR_E, ROT_E, QUIT;\n\nROT_E: E;\n  QUIT;\n",
+      "codigo": "VAR_D=2;\nVAR_E=2;\n\nA;\nFORK ROT_C;\nB;\nFORK ROT_E';\nJOIN VAR_D, ROT_D, QUIT;\n\nROT_C: C;\n  JOIN VAR_D, ROT_D, QUIT;\n\nROT_D: D;\n  JOIN VAR_E ; ROT_E , QUIT ;\n\nROT_E': JOIN VAR_E, ROT_E, QUIT;\n\nROT_E: E;\n  QUIT;\n",
       "nome": "Exemplo 3"
     }
   ]
