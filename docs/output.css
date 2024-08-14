@@ -569,3 +569,7 @@ video {
 .flex-col {
   flex-direction: column;
 }
+
+.overflow-scroll {
+  overflow: scroll;
+}
