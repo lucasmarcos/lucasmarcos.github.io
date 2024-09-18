@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.4.9 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.11 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -558,6 +558,10 @@ video {
   display: flex;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -570,6 +574,6 @@ video {
   flex-direction: column;
 }
 
-.overflow-scroll {
-  overflow: scroll;
+.cm-editor {
+  height: 100%;
 }
