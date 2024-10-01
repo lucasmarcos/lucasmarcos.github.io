@@ -1,10 +1,6 @@
 {
   "exemplos": [
     {
-      "codigo": "A;\nFORK B;\nC;\n",
-      "nome": "Simples"
-    },
-    {
       "codigo": "VAR_J = 2;\n\nC1;\nFORK ROT_C3;\nC2;\nJOIN VAR_J, ROT_C4, QUIT;\n\nROT_C3:\n  C3;\n  JOIN VAR_J, ROT_C4, QUIT;\n\nROT_C4:\n  C4;\n",
       "nome": "Exemplo 1"
     },
