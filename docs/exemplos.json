@@ -11,6 +11,26 @@
     {
       "codigo": "VAR_D=2;\nVAR_E=2;\n\nA;\nFORK ROT_C;\nB;\nFORK ROT_E';\nJOIN VAR_D, ROT_D, QUIT;\n\nROT_C: C;\n  JOIN VAR_D, ROT_D, QUIT;\n\nROT_D: D;\n  JOIN VAR_E , ROT_E , QUIT ;\n\nROT_E': JOIN VAR_E, ROT_E, QUIT;\n\nROT_E: E;\n  QUIT;\n",
       "nome": "Exemplo 3"
+    },
+    {
+      "codigo": "VAR_D = 3;\n\nA;\nB;\nFORK B1;\nFORK B2;\nC;\nD;\nJOIN VAR_D, D1, QUIT;\n\nB1:\n  JOIN VAR_D, D1, QUIT;\n\nB2:\n  JOIN VAR_D, D1, QUIT;\n\nD1:\n  QUIT;\n",
+      "nome": "Linear"
+    },
+    {
+      "codigo": "ROT_CALL;\nROT_CALL;\nROT_CALL;\n\nROT_CALL:\n  A;\n  QUIT;\n",
+      "nome": "Calls"
+    },
+    {
+      "codigo": "A;\nFORK ROT_C;\nJOIN VAR_C, ROT_D, QUIT;\n\nROT_C:\n  C;\n  JOIN VAR_C, ROT_D, QUIT;\n\nROT_D:\n  D;\n",
+      "nome": "Borked JOIN"
+    },
+    {
+      "codigo": "ROT_A;\n\nROT_A:\n  ROT_B;\n\nROT_B:\n  ROT_C;\n\nROT_C:\n  START;\n",
+      "nome": "Nested"
+    },
+    {
+      "codigo": "ROT_A;\n\nROT_A:\n  ROT_B;\n\nROT_B:\n  ROT_A;\n",
+      "nome": "Recursive"
     }
   ]
 }
