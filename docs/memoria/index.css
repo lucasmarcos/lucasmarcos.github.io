@@ -615,14 +615,8 @@
   .transform {
     transform: var(--tw-rotate-x) var(--tw-rotate-y) var(--tw-rotate-z) var(--tw-skew-x) var(--tw-skew-y);
   }
-  .animate-\[notrotateCard_300ms_forwards_ease-in-out\] {
-    animation: notrotateCard 300ms forwards ease-in-out;
-  }
   .animate-\[notrotateCard_300ms_forwards_linear\] {
     animation: notrotateCard 300ms forwards linear;
-  }
-  .animate-\[rotateCard_300ms_forwards_ease-in-out\] {
-    animation: rotateCard 300ms forwards ease-in-out;
   }
   .animate-\[rotateCard_300ms_forwards_linear\] {
     animation: rotateCard 300ms forwards linear;
@@ -658,9 +652,6 @@
   }
   .border-black {
     border-color: var(--color-black);
-  }
-  .bg-amber-50 {
-    background-color: var(--color-amber-50);
   }
   .bg-white {
     background-color: var(--color-white);
@@ -716,9 +707,6 @@
   }
   .backface-hidden {
     backface-visibility: hidden;
-  }
-  .perspective-dramatic {
-    perspective: var(--perspective-dramatic);
   }
   .transform-3d {
     transform-style: preserve-3d;
