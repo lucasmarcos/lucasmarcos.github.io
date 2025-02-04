@@ -614,6 +614,12 @@
   .h-\[196px\] {
     height: 196px;
   }
+  .h-full {
+    height: 100%;
+  }
+  .h-max {
+    height: max-content;
+  }
   .w-\[128px\] {
     width: 128px;
   }
