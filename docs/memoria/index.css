@@ -315,7 +315,7 @@
 }
 @font-face {
   font-family: "Libras2020-Regular";
-  src: url("../Libras2020-Regular.ttf") format("truetype");
+  src: url("./Libras2020-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
