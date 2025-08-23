@@ -23,25 +23,5 @@
     hx-trigger="load"
   >
   </div>
-
-  <script>
-    const fetchFuncionarios = async () => {
-      await htmx.ajax("GET", "/api/funcionarios", "#lista-funcionarios");
-    };
-
-    document.addEventListener("htmx:configRequest", (event) => {
-      if (event.detail.path === "/api/funcionario" && event.detail.verb !== "GET") {
-        setTimeout(() => {
-          document.getElementById("toast").innerHTML = "";
-        }, 3 * 1000)
-      }
-    });
-
-    document.addEventListener("htmx:afterRequest", async (event) => {
-      if (event.target.id === "formulario") {
-        await fetchFuncionarios();
-      }
-    });
-</script>
 </body>
 </html>
