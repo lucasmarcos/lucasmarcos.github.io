@@ -5,21 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="data:">
   <title>htmx</title>
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="pico.min.css">
   <script src="htmx.min.js"></script>
   <meta name="htmx-config" content='{"selfRequestsOnly":false}'>
 </head>
 <body>
   <div
+    class="container"
     id="formulario"
     hx-get="https://kktwevkrtvwhmcapjscx.supabase.co/functions/v1/htmx/api/formulario"
-    hx-trigger="load"
-  >
-  </div>
-
-  <div
-    id="lista-funcionarios"
-    hx-get="https://kktwevkrtvwhmcapjscx.supabase.co/functions/v1/htmx/api/funcionarios"
     hx-trigger="load"
   >
   </div>
