@@ -9,9 +9,17 @@
   <script src="htmx.min.js"></script>
 </head>
 <body>
-  <div id="formulario" hx-get="/api/formulario" hx-trigger="load"></div>
+  <div
+    id="formulario"
+    hx-get="https://kktwevkrtvwhmcapjscx.supabase.co/functions/v1/htmx/api/formulario"
+    hx-trigger="load"
+  />
 
-  <div id="lista-funcionarios" hx-get="/api/funcionarios" hx-trigger="load"></div>
+  <div
+    id="lista-funcionarios"
+    hx-get="https://kktwevkrtvwhmcapjscx.supabase.co/functions/v1/htmx/api/funcionarios"
+    hx-trigger="load"
+  />
 
   <script>
     const fetchFuncionarios = async () => {
