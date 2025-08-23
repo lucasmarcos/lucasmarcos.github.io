@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:">
+  <title>htmx</title>
+  <link rel="stylesheet" href="pico.min.css">
+  <script src="htmx.min.js"></script>
+  <meta name="htmx-config" content='{"selfRequestsOnly":false}'>
+</head>
+<body>
+  <div
+    class="container"
+    id="main"
+    hx-get="http://localhost:8000/htmx"
+    hx-trigger="load"
+  >
+  </div>
+</body>
+</html>
