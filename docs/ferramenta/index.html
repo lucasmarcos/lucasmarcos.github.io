@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ferramenta</title>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="icon" href="data:">
+  </head>
+  <body>
+    <div class="flex flex-col h-screen">
+      <header>
+        <label for="mode-select">Modo:</label>
+        <select id="mode-select">
+          <option value="fork-join">Fork-Join</option>
+          <option value="parbegin-parend">PARBEGIN/PAREND</option>
+        </select>
+      </header>
+
+      <main class="flex-1 flex md:flex-row flex-col overflow-hidden">
+        <div id="editor" class="flex-1"></div>
+        <div id="graph" class="flex-1"></div>
+      </main>
+    </div>
+    <script src="./main.js"></script>
+  </body>
+</html>
